@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 const Navbar = () => {
   const menuItems = (
     <React.Fragment>
@@ -52,8 +51,8 @@ const Navbar = () => {
             {menuItems}
           </ul>
         </div>
-        <Link to="/home" className="btn btn-ghost normal-case text-xl">
-          Doctors Portal
+        <Link to="/home" className="text-3xl btn btn-ghost normal-case ">
+          24hr HomeCare
         </Link>
       </div>
       <div className="navbar-end hidden lg:flex">
