@@ -7,9 +7,9 @@ const Main = () => {
   return (
     <div>
       <Navbar />
-      <div className="max-w-[1440px] mx-auto">
+      <section className="max-w-[1440px] mx-auto">
         <Outlet />
-      </div>
+      </section>
       <Footer />
     </div>
   );

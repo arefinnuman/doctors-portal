@@ -23,7 +23,7 @@ const Footer = () => {
           <span className="footer-title">Our Address</span>
           <p className="text-secondary font-extrabold">
             Mirpur-1, Dhaka, Bangladesh
-          </p>
+          </p> 
         </div>
       </footer>
       <footer className="footer footer-center mb-5 text-base-content">

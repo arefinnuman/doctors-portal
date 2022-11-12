@@ -4,7 +4,10 @@ import chair from "../../Assets/images/chair.png";
 import PrimaryButton from "../../Components/PrimaryButton";
 const Banner = () => {
   return (
-    <section className="md;my-20" style={{ background: `url(${bgbanner})` }}>
+    <section
+      className="md:my-20 md:mx-5"
+      style={{ background: `url(${bgbanner})` }}
+    >
       <div className="hero ">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <img src={chair} className="rounded-lg md:w-1/2 shadow-2xl" alt="" />
