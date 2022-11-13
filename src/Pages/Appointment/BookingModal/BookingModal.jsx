@@ -57,7 +57,7 @@ const BookingModal = ({ treatment, selected, setTreatment }) => {
             <input
               type="text"
               name="name"
-              placeholder="Full Name"
+              placeholder="Your Full Name"
               className="input input-bordered w-full "
             />
             <input
