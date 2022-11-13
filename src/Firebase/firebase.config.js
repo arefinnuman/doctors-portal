@@ -2,13 +2,15 @@ import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAs8Kb4cwwFGG7mAlanINhj6briialt_YI",
-  authDomain: "hr-homecare.firebaseapp.com",
-  projectId: "hr-homecare",
-  storageBucket: "hr-homecare.appspot.com",
-  messagingSenderId: "1082023779648",
-  appId: "1:1082023779648:web:fe5a2dab1631017c14aea5",
-  measurementId: "G-KQS6565HFG",
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
+  measurementId: process.env.REACT_APP_measurementId,
 };
 
-export const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+
+export default app;
