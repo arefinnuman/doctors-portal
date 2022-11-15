@@ -1,22 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider";
 
 const SignUp = () => {
+  const { signUp } = useContext(AuthContext);
+
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
 
-  const handleLogin = (data) => {
-    console.log(data);
+  const handleSignUp = (data) => {
+    signUp(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.error(error));
   };
   return (
     <section className="min-h-screen flex justify-center items-center">
-      <div classme="w-96 p-8">
+      <div className="w-96 p-8">
         <h2 className="text-xl font-semibold text-center">SignUp </h2>
-        <form onSubmit={handleSubmit(handleLogin)}>
+        <form onSubmit={handleSubmit(handleSignUp)}>
           <div className="form-control w-full max-w-xs">
             <label className="label">
               <span className="label-text">Name</span>
@@ -29,8 +37,8 @@ const SignUp = () => {
               placeholder=""
               className="input input-bordered w-full max-w-xs"
             />
-            {errors.email && (
-              <p className="text-error text-xs">{errors.email?.message}</p>
+            {errors.name && (
+              <p className="text-error text-xs">{errors.name?.message}</p>
             )}
           </div>
           <div className="form-control w-full max-w-xs">
@@ -83,7 +91,7 @@ const SignUp = () => {
         </form>
         <p className="mt-4 text-sm text-center">
           Have an account ?{" "}
-          <Link className="text-primary" to="/signup">
+          <Link className="text-primary" to="/login">
             {" "}
             Login Now
           </Link>
