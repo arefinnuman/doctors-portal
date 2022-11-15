@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const SignUp = () => {
-  const { signUp } = useContext(AuthContext);
+  const { signUp, updateUser } = useContext(AuthContext);
 
   const {
     register,
@@ -12,13 +12,24 @@ const SignUp = () => {
     handleSubmit,
   } = useForm();
 
+  const [signUpError, setSignUpError] = useState("");
   const handleSignUp = (data) => {
+    setSignUpError("");
     signUp(data.email, data.password)
       .then((result) => {
         const user = result.user;
         console.log(user);
+        const userInfo = {
+          displayName: data.name,
+        };
+        updateUser(userInfo)
+          .then(() => {})
+          .catch((error) => console.error(error));
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        setSignUpError(error.message);
+      });
   };
   return (
     <section className="min-h-screen flex justify-center items-center">
@@ -88,6 +99,7 @@ const SignUp = () => {
             value="Sign up"
             type="submit"
           />
+          {signUpError && <p className="text-error">{signUpError}</p>}
         </form>
         <p className="mt-4 text-sm text-center">
           Have an account ?{" "}
